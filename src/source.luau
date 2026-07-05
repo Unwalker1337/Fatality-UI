@@ -3,7 +3,7 @@
 
     Author: 4lpaca
     License: MIT
-    Github: https://github.com/4lpaca-pin/Fatality
+    Github: https://github.com/Unwalker1337/Fatality-UI
 --]]
 
 -- Export Types --
