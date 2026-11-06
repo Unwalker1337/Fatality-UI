@@ -1,27 +1,16 @@
-local Fatality = loadstring(game:HttpGet("https://raw.githubusercontent.com/Unwalker1337/Fatality-UI/refs/heads/main/src/source.luau"))();
-local Notification = Fatality:CreateNotifier();
-
-Fatality:Loader({
-	Name = "FATALITY",
-	Duration = 4
-});
-
-local Config = Window:AddConfig();
-
-Config:Init("Counter-Strike 2","Fatality-Win");
-
-local Rage = Window:AddMenu({
-	Name = "RAGE",
-	Icon = "skull"
+local Fatality = loadstring(game:HttpGet("https://raw.githubusercontent.com/Unwalker1337/Fatality-UI/main/src/source.luau"))()
+Fatality:Loader({Name = "FATALITY", Duration = 1.4})
+local Window = Fatality.new({Name = "FATALITY"})
+local Menu = Window:AddMenu({Name = "SETTINGS", Icon = "settings", AutoFill = false})
+local Section = Menu:AddSection({Name = "GENERAL", Position = "left"})
+Section:AddToggle({
+    Name = "Enabled",
+    Flag = "enabled",
+    Default = false,
+    Bind = {Key = "Q", Mode = "Hold", Visible = true},
 })
 
-local Weapon = Rage:AddSection({
-	Position = 'left',
-	Name = "WEAPON"
-});
-
-Weapon:AddToggle({
-	Name = "Toggle",
-	Flag = "Toggle", -- this will save value to config
-	Default = false
-})
+local Config = Window:AddConfig()
+Config:Init("Config-example", "FATALITY")
+Window:AddSave(function() Config:ReloadConfig(); Config:Open() end)
+-- The built-in panel saves the control value and keybind key/mode/visibility.
